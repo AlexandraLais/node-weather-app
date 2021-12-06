@@ -5,6 +5,7 @@ const express = require('express')
 const hbs = require('hbs')
 
 const app =  express()
+const port = process.env.PORT || 3000 // retrieve environment variable from Heroku if not exist use 3000
 
 // define path for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -96,6 +97,6 @@ app.get('*',(req, resp) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up an running on port 3000')
+app.listen(port, () => {
+    console.log('Server is up and running on' + port)
 })
