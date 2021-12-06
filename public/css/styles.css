@@ -30,7 +30,12 @@ header a {
     font-family: Arial;
 }
 
-.main-
+.weather-info {
+    display: flex;
+    gap: 20px;
+}
+
+
 
 footer {
     color: #888888;

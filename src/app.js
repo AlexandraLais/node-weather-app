@@ -60,11 +60,12 @@ app.get('/weather', (req, resp) => {
     }
 
     console.log(`url address parameter: ${req.query.address}`)
+    console.log('I am at app.get(weather')
     location.geocode(req.query.address, (error, {longitude, latitude, placeName} = {}) => {
         if (error) {
             return resp.send({error})
         }
-        forecast.currentWeather(longitude, latitude, (error, {weatherDescription, currentTemperature, feeltTemperature} = {}) => {
+        forecast.currentWeather(longitude, latitude, (error, {weatherIcon, weatherDescription, currentTemperature, feeltTemperature} = {}) => {
             if (error) {
                 return resp.send({error})
             }
@@ -72,6 +73,7 @@ app.get('/weather', (req, resp) => {
             resp.send({
                 title: 'Weather',
                 locationName: placeName, // body.location.name,
+                weatherIcon, // body.current.weather_icons[0]
                 weatherDescription,// body.current.weather_descriptions[0],
                 currentTemperature, //body.current.temperature,
                 feeltTemperature //body.current.feelslike
@@ -98,5 +100,5 @@ app.get('*',(req, resp) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up and running on' + port)
+    console.log('Server is up and running on ' + port)
 })
