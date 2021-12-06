@@ -60,7 +60,6 @@ app.get('/weather', (req, resp) => {
     }
 
     console.log(`url address parameter: ${req.query.address}`)
-    console.log('I am at app.get(weather')
     location.geocode(req.query.address, (error, {longitude, latitude, placeName} = {}) => {
         if (error) {
             return resp.send({error})
